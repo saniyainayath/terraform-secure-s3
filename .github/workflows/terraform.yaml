@@ -18,10 +18,11 @@ jobs:
       with:
         terraform_version: 1.6.6
 
-    - name: Run Checkov Scan
-      uses: bridgecrewio/checkov-action@v2
+    - name: Run tfsec scan
+      uses: aquasecurity/tfsec-action@v1.0.0
       with:
-        skip_download: false
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+
 
     - name: Terraform Init
       run: terraform init
