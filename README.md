@@ -56,19 +56,13 @@ Make sure you have the following before deploying:
       ```bash
        export AWS_ACCESS_KEY_ID=your_access_key
        export AWS_SECRET_ACCESS_KEY=your_secret_key
-Or Configure via AWS CLI:
-Run the AWS CLI configuration command to set up your credentials:
+  Or Configure via AWS CLI:
+  Run the AWS CLI configuration command to set up your credentials:
 
-bash
-aws configure
-3. Initialize and Apply Terraform
-Once the credentials are configured, initialize Terraform and apply the configuration:
+  ```bash
+    aws configure
 
-bash
-terraform init
-terraform plan
-terraform apply
-⚙️ CI/CD Pipeline
+###⚙️ CI/CD Pipeline###
 The repository includes a GitHub Actions workflow that:
 
 Runs terraform init, plan, and apply on push to the main branch
