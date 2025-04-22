@@ -11,7 +11,7 @@ resource "aws_s3_bucket" "test_bucket" {
   force_destroy = true
 }
 
-#  Enable S3 Bucket Versioning
+# Enable S3 Bucket Versioning
 resource "aws_s3_bucket_versioning" "versioning" {
   bucket = aws_s3_bucket.test_bucket.id
 
@@ -20,7 +20,7 @@ resource "aws_s3_bucket_versioning" "versioning" {
   }
 }
 
-#  Enable Lifecycle Rule (Guardrail)
+# Enable Lifecycle Rule (Guardrail)
 resource "aws_s3_bucket_lifecycle_configuration" "lifecycle" {
   bucket = aws_s3_bucket.test_bucket.id
 
@@ -34,7 +34,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "lifecycle" {
   }
 }
 
-#  Enable Default Server-Side Encryption (Guardrail)
+# Enable Default Server-Side Encryption (Guardrail)
 resource "aws_s3_bucket_server_side_encryption_configuration" "encryption" {
   bucket = aws_s3_bucket.test_bucket.id
 
@@ -74,7 +74,7 @@ resource "aws_iam_policy" "enforce_mfa_policy" {
           "iam:ChangePassword",
           "iam:GetUser"
         ],
-        Resource = "arn:aws:iam::*:user/$${aws:username}"
+        Resource = "arn:aws:iam::*:user/${aws:username}"
       },
       {
         Sid    = "AllowManageOwnAccessKeys",
@@ -86,7 +86,7 @@ resource "aws_iam_policy" "enforce_mfa_policy" {
           "iam:UpdateAccessKey",
           "iam:GetAccessKeyLastUsed"
         ],
-        Resource = "arn:aws:iam::*:user/$${aws:username}"
+        Resource = "arn:aws:iam::*:user/${aws:username}"
       },
       {
         Sid    = "AllowManageOwnSigningCertificates",
@@ -97,7 +97,7 @@ resource "aws_iam_policy" "enforce_mfa_policy" {
           "iam:UpdateSigningCertificate",
           "iam:UploadSigningCertificate"
         ],
-        Resource = "arn:aws:iam::*:user/$${aws:username}"
+        Resource = "arn:aws:iam::*:user/${aws:username}"
       },
       {
         Sid    = "AllowManageOwnSSHPublicKeys",
@@ -109,7 +109,7 @@ resource "aws_iam_policy" "enforce_mfa_policy" {
           "iam:UpdateSSHPublicKey",
           "iam:UploadSSHPublicKey"
         ],
-        Resource = "arn:aws:iam::*:user/$${aws:username}"
+        Resource = "arn:aws:iam::*:user/${aws:username}"
       },
       {
         Sid    = "AllowManageOwnGitCredentials",
@@ -121,7 +121,7 @@ resource "aws_iam_policy" "enforce_mfa_policy" {
           "iam:ResetServiceSpecificCredential",
           "iam:UpdateServiceSpecificCredential"
         ],
-        Resource = "arn:aws:iam::*:user/$${aws:username}"
+        Resource = "arn:aws:iam::*:user/${aws:username}"
       },
       {
         Sid    = "AllowManageOwnVirtualMFADevice",
@@ -140,7 +140,7 @@ resource "aws_iam_policy" "enforce_mfa_policy" {
           "iam:ListMFADevices",
           "iam:ResyncMFADevice"
         ],
-        Resource = "arn:aws:iam::*:user/$${aws:username}"
+        Resource = "arn:aws:iam::*:user/${aws:username}"
       },
       {
         Sid       = "DenyAllExceptListedIfNoMFA",
