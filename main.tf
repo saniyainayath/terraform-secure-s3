@@ -166,6 +166,7 @@ resource "aws_iam_policy" "enforce_mfa_policy" {
   })
 }
 
+
 resource "aws_iam_group_policy_attachment" "attach_mfa_policy" {
   group      = aws_iam_group.mfa_enforced_group.name
   policy_arn = aws_iam_policy.enforce_mfa_policy.arn
