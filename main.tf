@@ -50,6 +50,7 @@ resource "aws_iam_group" "mfa_enforced_group" {
   name = "MFAEnforcedGroup"
 }
 
+# Policy to enforce MFA
 resource "aws_iam_policy" "enforce_mfa_policy" {
   name        = "EnforceMFA"
   path        = "/"
@@ -166,7 +167,7 @@ resource "aws_iam_policy" "enforce_mfa_policy" {
   })
 }
 
-
+# Attach MFA policy to the IAM group
 resource "aws_iam_group_policy_attachment" "attach_mfa_policy" {
   group      = aws_iam_group.mfa_enforced_group.name
   policy_arn = aws_iam_policy.enforce_mfa_policy.arn
