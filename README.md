@@ -1,5 +1,3 @@
-markdown
-Copy code
 # Secure Infrastructure with Terraform and GitHub Actions
 
 This repository contains Terraform code to deploy a secure AWS infrastructure including S3 bucket configurations and IAM policies. It uses GitHub Actions for automated CI/CD workflows.
@@ -34,16 +32,16 @@ Make sure you have the following before deploying:
 
 ## Setup and Deployment
 
-### 1. Clone the Repository
+### Clone the Repository
 ```bash
 git clone https://github.com/saniyainayath/terraform-secure-s3.git
 cd terraform-secure-s3
-2. Configure AWS Credentials
+--> Configure AWS Credentials
 There are two ways to provide credentials:
 
 If Using GitHub Actions (Recommended):
 
-Go to your GitHub repository → Settings → Secrets and variables → Actions.
+-->Go to your GitHub repository → Settings → Secrets and variables → Actions.
 
 Add the following secrets:
 
@@ -51,7 +49,7 @@ AWS_ACCESS_KEY_ID
 AWS_SECRET_ACCESS_KEY
 These secrets will be used in the GitHub Actions workflow to authenticate securely with AWS.
 
-If Running Locally:
+-->If Running Locally:
 
 You can configure AWS credentials by using environment variables or the AWS CLI.
 
@@ -59,29 +57,29 @@ Using Environment Variables:
 
 Set the AWS credentials as environment variables:
 
-bash
-Copy code
 export AWS_ACCESS_KEY_ID=your_access_key
 export AWS_SECRET_ACCESS_KEY=your_secret_key
-Or Configure via AWS CLI:
+
+       Or
+
+Configure via AWS CLI:
 
 Run the AWS CLI configuration command to set up your credentials:
 
-bash
-Copy code
 aws configure
-3. Initialize and Apply Terraform
+
+--> Initialize and Apply Terraform
 Once the credentials are configured, initialize Terraform and apply the configuration:
 
-bash
-Copy code
 terraform init
 terraform plan
 terraform apply
+
 ⚙️ CI/CD Pipeline
 The repository includes a GitHub Actions workflow that:
 
-Runs terraform init, plan, and apply on push to the main branch.
-Uses the secrets to authenticate securely with AWS.
-Automates infrastructure provisioning and updates.
+--Runs terraform init, plan and apply on push to the main branch.
+--Uses the secrets to authenticate securely with AWS.
+--Automates infrastructure provisioning and updates.
+
 💡 You can customize the workflow in .github/workflows/main.yml.
