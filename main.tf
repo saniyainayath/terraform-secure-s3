@@ -28,13 +28,16 @@ resource "aws_s3_bucket_lifecycle_configuration" "lifecycle" {
     id     = "expire-noncurrent-versions"
     status = "Enabled"
 
-    filter {} # empty filter matches all objects (required by provider now)
+    filter {
+      prefix = "" # apply to all objects
+    }
 
     noncurrent_version_expiration {
       noncurrent_days = 90
     }
   }
 }
+
 
 
 # Enable Default Server-Side Encryption (Guardrail)
