@@ -1,32 +1,90 @@
-# Secure Infrastructure with Terraform and GitHub Actions
+Secure Infrastructure with Terraform and GitHub Actions
+This repository contains Terraform code to deploy a secure AWS infrastructure including S3 bucket configurations and IAM policies. It uses GitHub Actions for automated CI/CD workflows.
 
-This repository contains Terraform code to deploy a secure AWS infrastructure with IAM policies and S3 bucket configurations. It utilizes GitHub Actions for continuous integration and continuous deployment (CI/CD).
+📚 Table of Contents
+Overview
 
-## Table of Contents
-- [Overview](#overview)
-- [Prerequisites](#prerequisites)
-- [Setup and Deployment](#setup-and-deployment)
-- [CI/CD Pipeline](#cicd-pipeline)
-- [License](#license)
+Prerequisites
 
-## Overview
+Setup and Deployment
 
-This repository sets up a secure AWS infrastructure by:
-- Creating a unique S3 bucket with versioning, encryption, and lifecycle rules.
-- Enforcing MFA for IAM users through policy attachment.
+CI/CD Pipeline
 
-The goal of this project is to implement secure infrastructure practices using Terraform, ensuring best practices like encryption and access control are in place.
+License
 
-## Prerequisites
+🔍 Overview
+This Terraform configuration provisions a secure AWS environment by:
 
-Before you begin, ensure you have the following:
-- **Terraform** installed on your local machine. Follow the [Terraform installation guide](https://www.terraform.io/docs/install).
-- **GitHub account** to store and manage your Terraform code.
-- **AWS account** and configured **AWS credentials** to allow Terraform to interact with AWS services.
+Creating an S3 bucket with:
 
-## Setup and Deployment
+Versioning enabled
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/terraform-secure-infra.git
-   cd terraform-secure-infra
+Server-side encryption
+
+Lifecycle rules to manage object expiration
+
+Enforcing Multi-Factor Authentication (MFA) for IAM users via policy attachment
+
+This project emphasizes security best practices in AWS infrastructure provisioning.
+
+⚙️ Prerequisites
+Make sure you have the following before deploying:
+
+Terraform installed
+
+A GitHub account
+
+An AWS account with:
+
+Sufficient IAM permissions
+
+Programmatic access (access key & secret key)
+
+Setup and Deployment
+
+1. Clone the Repository
+bash
+Copy
+Edit
+git clone https://github.com/saniyainayath/terraform-secure-s3.git
+cd terraform-secure-s3
+2. Configure AWS Credentials
+There are two ways to provide credentials:
+
+🔐 If Using GitHub Actions (Recommended):
+Go to your repo → Settings → Secrets and variables → Actions and add:
+
+AWS_ACCESS_KEY_ID
+
+AWS_SECRET_ACCESS_KEY
+
+These are used in the GitHub Actions workflow to authenticate with AWS.
+
+💻 If Running Locally:
+Use environment variables or the AWS CLI:
+
+bash
+Copy
+Edit
+export AWS_ACCESS_KEY_ID=your_access_key
+export AWS_SECRET_ACCESS_KEY=your_secret_key
+Or:
+
+aws configure
+
+3. Initialize and Apply Terraform
+
+terraform init
+terraform plan
+terraform apply
+
+⚙️ CI/CD Pipeline
+The repository includes a GitHub Actions workflow that:
+
+Runs terraform init, plan, and apply on push to main
+
+Uses secrets to authenticate securely with AWS
+
+Automates infrastructure provisioning and updates
+
+💡 You can customize the workflow in .github/workflows/main.yml.
